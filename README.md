@@ -28,6 +28,7 @@ Think of how many scenarios there are where an access point providing specific e
 - [ ] Build a skeleton prototype for Raspberry Pi 1 and 2.
   - [ ] Configure Services.
   - [ ] Build a simple webpage to output service information.
+
 #### Stage 2
 - [ ] Bash script the prototype for consumption with curl by the community.
   - [ ] Build a community portal feedback website.
