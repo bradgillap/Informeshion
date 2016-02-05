@@ -10,7 +10,7 @@ Think of how many scenarios there are where an access point providing specific e
 
 - The user arrives to an event
 - The user has to know this access point exists with relevant information making this. **barrier one**
-- The user connects to the access point and then has to open know to opne a browser. **barrier two**
+- The user connects to the access point and then has to know, to open a browser. **barrier two**
 - The user retrieves relevant information and perhaps adds to the conveersation. **success**
 
 ## Goals
