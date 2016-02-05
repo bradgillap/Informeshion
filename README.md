@@ -8,10 +8,10 @@ The Informeshion project seeks to script [Raspbian](https://www.raspbian.org/) a
 
 Think of how many scenarios there are where an access point providing specific event information would be useful. Many of these situations would be best served through different types of images, text, and video formats. Let's think critically about the problem we are trying to solve.
 
-- The user arrives to an event
-- The user has to know this access point exists with relevant information making this. **barrier one**
-- The user connects to the access point and then has to know, to open a browser. **barrier two**
-- The user retrieves relevant information and perhaps adds to the conveersation. **success**
+1. The user arrives to an event
+2. The user has to know this access point exists with relevant information making this. **barrier one**
+3. The user connects to the access point and then has to know, to open a browser. **barrier two**
+4. The user retrieves relevant information and perhaps adds to the conveersation. **success**
 
 ## Goals
 ### General
