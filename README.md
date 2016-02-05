@@ -15,7 +15,7 @@ Think of how many scenarios there are where an access point providing specific e
 
 ## Goals
 ### General
-* Provide an image for each Raspberry Pi 1 and two to be loaded to an SDCard.
+* Provide an image for each Raspberry Pi one and two to be loaded to an SDCard.
 * Provide a curl script that will complete all steps necessary to setup a default Informeshion with graphical installer options.
 * Construct media, supporting the device and idea in ways that might make sense to a user.
 * Offer less restrictive templating for users to construct and provide their own Informeshion user experience.
