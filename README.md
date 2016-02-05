@@ -2,7 +2,7 @@
 
 ## Purpose
 
-The Informeshion project seeks to script [Raspbian](https://www.raspbian.org/) as an information awareness broadcast station with mesh capabilities. The result will be low powered devices broadcasting wireless signal over short distances of relevant information. The solution must be easy for the organizer to setup and easier for the user to retrieve.
+The Informeshion project seeks to script [Raspbian](https://www.raspbian.org/) as an information awareness broadcast station with mesh capabilities. The result will be low powered devices broadcasting wireless signal over short distances of *relevant information*. The solution must be easy for the organizer to setup and easier for the user to retrieve.
 
 ### What is Relevant Information?
 
