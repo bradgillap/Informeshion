@@ -33,16 +33,18 @@ Think of how many scenarios there are where an access point providing specific e
 - [ ] Bash script the prototype for consumption with curl by the community.
   - [ ] Build a community portal feedback website.
 - [ ] Release preconfigured images.
+
 #### Stage 3
 - [ ] Refine and expand possible services.
   - [ ] Auto open device browsers, add features etc, possibly generate QR codes for configuration etc.
 - [ ] Refine and build in more user control options for theming.
+
 #### Stage 4
 - [ ] Optimize for hardware example: SDCard lifespan, threaded processing etc.
 - [ ] Test against a range of cheap available wireleses hardware paying close attention to the testing environment. Focus on mesh.
 - [ ] Create a recommnded hardware list. 
 
-Questions:
+## Questions:
 How is this different from [Piratebox](https://piratebox.cc/) or Librarybox(http://librarybox.us) ?
 
 We absolutely fell in love the piratebox project but we found development to be constrained by the low cost devices selected. We plan to leave legacy devices in the dust in favour of new software features. Since the project is focused on Raspbian, it is likely to stay with the Raspberry Pi product. 
