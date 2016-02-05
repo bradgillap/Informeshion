@@ -42,7 +42,7 @@ Think of how many scenarios there are where an access point providing specific e
 #### Stage 4
 - [ ] Optimize for hardware example: SDCard lifespan, threaded processing etc.
 - [ ] Test against a range of cheap available wireleses hardware paying close attention to the testing environment. Focus on mesh.
-- [ ] Create a recommnded hardware list. 
+- [ ] Create a recommended hardware list. 
 
 ## Questions:
 How is this different from [Piratebox](https://piratebox.cc/) or Librarybox(http://librarybox.us) ?
