@@ -45,7 +45,7 @@ Think of how many scenarios there are where an access point providing specific e
 - [ ] Create a recommended hardware list. 
 
 ## Questions:
-How is this different from [Piratebox](https://piratebox.cc/) or Librarybox(http://librarybox.us) ?
+How is this different from [Piratebox](https://piratebox.cc/) or [Librarybox](http://librarybox.us) ?
 
 We absolutely fell in love the piratebox project but we found development to be constrained by the low cost devices selected. We plan to leave legacy devices in the dust in favour of new software features. Since the project is focused on Raspbian, it is likely to stay with the Raspberry Pi product. 
 
