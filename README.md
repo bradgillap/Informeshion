@@ -44,6 +44,10 @@ Think of how many scenarios there are where an access point providing specific e
 - [ ] Test against a range of cheap available wireless hardware paying close attention to the testing environment. Focus on mesh.
 - [ ] Create a recommended hardware list. 
 
+#### Stage 5
+- [ ] Mesh the [C.H.I.P](http://getchip.com/) hardware as cheap deployable access points leaving the pi to do the heavy lifting.
+- [ ] Package a combination of pi2,c.h.i.p, and cheap batteries as a possible disposable network.
+
 ## Questions:
 How is this different from [Piratebox](https://piratebox.cc/) or [Librarybox](http://librarybox.us) ?
 
