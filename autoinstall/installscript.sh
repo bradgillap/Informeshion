@@ -31,6 +31,12 @@ if (whiptail --title "" --yesno "Do you need to run Raspi-Config to expand your 
     echo "No $?."
 fi
 
+echo testing
+
+
+
+
+
 
 #END OF FILE
 
