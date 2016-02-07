@@ -25,11 +25,23 @@ fi
 
 
 ####### Configure Pi? #######
-if (whiptail --title "" --yesno "Do you need to run Raspi-Config to expand your SDCard size? If you choose yes, you will need to restart the process. \n Current Partition size is \n \n $space"  20 90 ) then
+if (whiptail --title "" --yesno "Do you need to run Raspi-Config to expand your SDCard size? If you choose yes, you will need to restart the process. \n \n Current Partition size is: \n \n $space"  20 90 ) then
    echo "Yes $?."
    $SUDO raspi-config
-    echo "No $?."
+else
+   echo "No $?."
 fi
+
+
+########INSTALL SOME STUFF #######
+
+# hostapd turns wifi cards into accesspoints, isc-dhcp-server hosts dhcp, 
+
+#$SUDO apt-get install hostapd isc-dhcp-server -y
+
+# NEXT TODO: Figure out configuration options for hostapd and dhcp server. Script bash to modify the proper lines in those config files. 
+
+
 
 
 
