@@ -41,7 +41,7 @@ Think of how many scenarios there are where an access point providing specific e
 
 #### Stage 4
 - [ ] Optimize for hardware example: SDCard lifespan, threaded processing etc.
-- [ ] Test against a range of cheap available wireleses hardware paying close attention to the testing environment. Focus on mesh.
+- [ ] Test against a range of cheap available wireless hardware paying close attention to the testing environment. Focus on mesh.
 - [ ] Create a recommended hardware list. 
 
 ## Questions:
