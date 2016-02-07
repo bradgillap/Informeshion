@@ -28,8 +28,9 @@ fi
 if (whiptail --title "" --yesno "Do you need to run Raspi-Config to expand your SDCard size? If you choose yes, you will need to restart the process. \n Current Partition size is \n \n $space"  20 90 ) then
    echo "Yes $?."
    $SUDO raspi-config
-Broadcast message from pi@raspberrypi on pts/1 (Sun 2016-02-07 00:27:21 EST):
     echo "No $?."
+fi
 
 
 #END OF FILE
+
