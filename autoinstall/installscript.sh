@@ -52,7 +52,7 @@ if (whiptail --title "Continue Configuring Services?" --yesno "We will now confi
 #dnsmasq.conf
 	$SUDO sed -i 's/#interface=/interface=wlan0/g' /etc/dnsmasq.conf
 	$SUDO sed -i 's/#dhcp-range=192.168.0.50,192.168.0.150,12h/dhcp-range=192.168.0.10,192.168.0.254,1h/g' /etc/dnsmasq.conf
-	$SUDO sed -i 's,#address=/double-click.net/127.0.0.1,address=192.168.0.1,g' /etc/dnsmasq.conf  #Had use different delimiters because of slashes in line.
+	$SUDO sed -i 's,#address=/double-click.net/127.0.0.1,address=/#/192.168.0.1,g' /etc/dnsmasq.conf  #Had use different delimiters because of slashes in line.
 #restart services
 	$SUDO service dnsmasq restart
 
