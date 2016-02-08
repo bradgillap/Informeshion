@@ -1,4 +1,4 @@
-# Informeshion
+# Informeshion - Off The Shelf Mesh Network.
 
 ## Purpose
 
