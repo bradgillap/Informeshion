@@ -23,7 +23,7 @@ fi
 
 ####### SET STATIC IP ########
 
-WLANIP=$(whiptail --inputbox "Set a unique static IP address for each mesh node. Example node1 = 192.168.1.1 , node2=192.168.1.2 etc. " 15 50 192.168.1.1 --title "Wireless Static IP" 3>&1 1>&2 2>&3)
+WLANIP=$(whiptail --no-button "Quit" --inputbox "Set a unique static IP address for each mesh node. Example node1 = 192.168.1.1 , node2=192.168.1.2 etc. " 15 50 192.168.1.1 --title "Wireless Static IP" 3>&1 1>&2 2>&3)
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
     echo "User selected Ok and entered " $WLANIP #Capture and use on configuration step
@@ -39,7 +39,7 @@ echo "(Exit status was $exitstatus)"
 
 ####### SET STATIC SUBNET MASK ########
 
-WLANIP=$(whiptail --inputbox "Set a subnet mask. Usually 255.255.255.0 " 15 50 255.255.255.0 --title "Wireless Static Subnet Mask" 3>&1 1>&2 2>&3)
+WLANIP=$(whiptail --no-button "Quit" --inputbox "Set a subnet mask. Usually 255.255.255.0 " 15 50 255.255.255.0 --title "Wireless Static Subnet Mask" 3>&1 1>&2 2>&3)
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
     echo "User selected Ok and entered " $SUBNETMASK #Capture and use on configuration step
@@ -51,7 +51,7 @@ fi
 
 ####### SET STATIC BROADCAST ADDRESS ########
 
-WLANIP=$(whiptail --inputbox "Set a broadcast address. Usually 255.255.255.255 " 15 50 255.255.255.255 --title "Wireless Static Broadcast" 3>&1 1>&2 2>&3)
+WLANIP=$(whiptail --no-button "Quit" --inputbox "Set a broadcast address. Usually 255.255.255.255 " 15 50 255.255.255.255 --title "Wireless Static Broadcast" 3>&1 1>&2 2>&3)
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
     echo "User selected Ok and entered " $BROADCAST #Capture and use on configuration step
@@ -94,7 +94,7 @@ else
     exit 1
 fi
 
-if (whiptail --title "Continue Configuring Services?" --yesno "We will now configure your services, Continue?" 15 50 ) then
+if (whiptail --title "Continue Configuring Services?" --no-button "Quit" --yesno "We will now configure your services, Continue?" 15 50 ) then
 
 #dnsmasq.conf
 	$SUDO sed -i 's/#interface=/interface=wlan0/g' /etc/dnsmasq.conf
