@@ -25,8 +25,9 @@ Think of how many scenarios there are where an access point providing specific e
 ### Loose Living Tasks
 
 #### Stage 1
-- [ ] Build a skeleton prototype for Raspberry Pi 1 and 2.
-  - [ ] Configure Services.
+- [x] Build a skeleton prototype for Raspberry Pi 1 and 2. IN PROGRESS
+  - [ ] Configure Services. Determine best method IN PROGRESS.
+  - [ ] Write curl script to run tasks automatically IN PROGRESS.
   - [ ] Build a simple webpage to output service information.
 
 #### Stage 2
