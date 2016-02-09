@@ -10,3 +10,13 @@ original = a regular expression describing the word to replace (or just the word
 new = the text to replace it with
 g = global (i.e. replace all and not just the first occurrence)
 file.txt = the file name
+
+What happens is, you are replacing exactly "#interface=" without touching the text that's before and after it on the same line.
+Make it target the whole line for replacement like this:
+s/^#interface=.*$/interface=wlan0/
+Explanation for ^#interface=.*$:
+^ is beginning of line
+#interface= is normal text
+. is any character, * means repeated any number of times
+$ is end of line
+You don't need the g at the end of the s//.
