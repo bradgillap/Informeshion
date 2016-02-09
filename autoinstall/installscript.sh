@@ -95,6 +95,6 @@ else
     exit 1
 fi
 
-# NEXT TODO: Figure out configuration options for hostapd and dhcp server. Script bash to modify the proper lines in those config files. 
+# NEXT TODO: Figure out configuration options for dnsmasq and olcr mesh stuff 
 #END OF FILE
 
