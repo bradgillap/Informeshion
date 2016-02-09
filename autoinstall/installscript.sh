@@ -49,6 +49,20 @@ else
     exit 1
 fi
 
+####### SET STATIC BROADCAST ADDRESS ########
+
+WLANIP=$(whiptail --inputbox "Set a broadcast address. Usually 255.255.255.255 " 15 50 255.255.255.255 --title "Wireless Static Broadcast" 3>&1 1>&2 2>&3)
+exitstatus=$?
+if [ $exitstatus = 0 ]; then
+    echo "User selected Ok and entered " $BROADCAST #Capture and use on configuration step
+    echo $BROADCAST
+else
+    echo "User selected Exit at set BROADCAST"
+    exit 1
+fi
+
+echo "(Exit status was $exitstatus)"
+
 
 
 ######## UPDATE RASPBIAN #######
