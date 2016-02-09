@@ -39,7 +39,7 @@ echo "(Exit status was $exitstatus)"
 
 ####### SET STATIC SUBNET MASK ########
 
-WLANIP=$(whiptail --no-button "Quit" --inputbox "Set a subnet mask. Usually 255.255.255.0 " 15 50 255.255.255.0 --title "Wireless Static Subnet Mask" 3>&1 1>&2 2>&3)
+SUBNETMASK=$(whiptail --no-button "Quit" --inputbox "Set a subnet mask. Usually 255.255.255.0 " 15 50 255.255.255.0 --title "Wireless Static Subnet Mask" 3>&1 1>&2 2>&3)
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
     echo "User selected Ok and entered " $SUBNETMASK #Capture and use on configuration step
@@ -51,7 +51,7 @@ fi
 
 ####### SET STATIC BROADCAST ADDRESS ########
 
-WLANIP=$(whiptail --no-button "Quit" --inputbox "Set a broadcast address. Usually 255.255.255.255 " 15 50 255.255.255.255 --title "Wireless Static Broadcast" 3>&1 1>&2 2>&3)
+BROADCAST=$(whiptail --no-button "Quit" --inputbox "Set a broadcast address. Usually 255.255.255.255 " 15 50 255.255.255.255 --title "Wireless Static Broadcast" 3>&1 1>&2 2>&3)
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
     echo "User selected Ok and entered " $BROADCAST #Capture and use on configuration step
