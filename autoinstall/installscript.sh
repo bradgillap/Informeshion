@@ -29,7 +29,8 @@ if [ $exitstatus = 0 ]; then
     echo "User selected Ok and entered " $WLANIP #Capture and use on configuration step
     echo $WLANIP
 else
-    echo "User selected Exit" #needs to exit completely
+    echo "User selected Exit at set IP"
+    exit 1
 fi
 
 echo "(Exit status was $exitstatus)"
@@ -44,7 +45,8 @@ if [ $exitstatus = 0 ]; then
     echo "User selected Ok and entered " $SUBNETMASK #Capture and use on configuration step
     echo $SUBNETMASK
 else
-    echo "User selected Exit" #needs to exit completely
+    echo "User selected Exit at set SUBNET MASK" #needs to exit completely
+    exit 1
 fi
 
 
@@ -61,7 +63,7 @@ fi
 
 ####### Configure PI RASP-CONFIG #######
 if (whiptail --title "Run Raspi-Config?" --no-button "Skip" --yesno "Do you need to run Raspi-Config to expand your SDCard size? \n \n Current Partition size is: \n \n $space"  15 50 ) then
-	echo "Yes $?."
+	echo "Exiting autoinstall.sh and starting raspi-config $?."
 	$SUDO raspi-config
 else
    echo "Skipped raspi-config $?."
@@ -74,8 +76,8 @@ if (whiptail --title "Install Needed Packages?" --yesno "We will now install the
 	$SUDO apt-get install dnsutils dnsmasq olsrd olsrd-plugins -y #
 
 else
-   #Need a gotoexit or don't continue configuring
-   echo "User quit at package install. $?."
+    echo "User quit at package install. $?."
+    exit 1
 fi
 
 if (whiptail --title "Continue Configuring Services?" --yesno "We will now configure your services, Continue?" 15 50 ) then
@@ -89,7 +91,8 @@ if (whiptail --title "Continue Configuring Services?" --yesno "We will now confi
 
 else
 
-	echo "User quit at configuration stage. $?."
+	echo "User quit at configuration CONFIGURE SERVICES $?."
+    exit 1
 fi
 
 # NEXT TODO: Figure out configuration options for hostapd and dhcp server. Script bash to modify the proper lines in those config files. 
