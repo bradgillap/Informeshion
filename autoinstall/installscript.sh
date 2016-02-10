@@ -87,7 +87,7 @@ fi
 
 if (whiptail --title "Install Needed Packages?" --yesno "We will now install the required packages. Continue?"  15 50 ) then
 
-	$SUDO apt-get install dnsutils dnsmasq olsrd olsrd-plugins -y #
+	$SUDO apt-get install dnsutils dnsmasq -y #
 
 else
     echo "User quit at package install. $?."
@@ -96,12 +96,7 @@ fi
 
 if (whiptail --title "Continue Configuring Services?" --no-button "Quit" --yesno "We will now configure your services, Continue?" 15 50 ) then
 
-#dnsmasq.conf
-#	$SUDO sed -i 's/#interface=/interface=wlan0/g' /etc/dnsmasq.conf
-#	$SUDO sed -i 's/#dhcp-range=192.168.0.50,192.168.0.150,12h/dhcp-range=192.168.0.10,192.168.0.254,1h/g' /etc/dnsmasq.conf
-#	$SUDO sed -i 's,#address=/double-click.net/127.0.0.1,address=/#/192.168.0.1,g' /etc/dnsmasq.conf  #Had use different delimiters because of slashes in line.
-#restart services
-#	$SUDO service dnsmasq restart
+#  $SUDDO sed -i 's/^#interface=.*$/interface=wlan0/'
 
 else
 
