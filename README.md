@@ -26,7 +26,7 @@ Think of how many scenarios there are where an access point providing specific e
 
 #### Stage 1
 - [x] Build a skeleton prototype for Raspberry Pi 1 and 2. IN PROGRESS
-  - [x] Get batman-adv to work on the [Raspbian kernel](https://www.raspberrypi.org/documentation/linux/kernel/building.md) IN PROGRESS.
+  - [x] Get batman-adv to work on the [Raspbian kernel](https://www.raspberrypi.org/documentation/linux/kernel/building.md)
   - [ ] Configure Services. Determine best method IN PROGRESS.
   - [ ] Write curl script to run tasks automatically IN PROGRESS.
   - [ ] Build a simple webpage to output service information.
