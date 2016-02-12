@@ -1,0 +1,68 @@
+NAME
+       batctl - B.A.T.M.A.N. advanced control and management tool
+
+SYNOPSIS
+       batctl [options] command|debug table [parameters]
+
+DESCRIPTION
+       batctl offers a convenient way to configure the batman-adv kernel module as well as displaying debug information such as originator tables, translation tables and the debug log. In combination with a bat-hosts file batctl
+       allows the use of host names instead of MAC addresses.
+
+       B.A.T.M.A.N. advanced operates on layer 2. Thus all hosts participating in the virtual switched network are transparently connected together for all protocols above layer 2. Therefore the common diagnosis tools do not work
+       as expected. To overcome these problems batctl contains the commands ping, traceroute, tcpdump which provide similar functionality to the normal ping(1), traceroute(1), tcpdump(1) commands, but modified to layer 2 behaviour
+       or using the B.A.T.M.A.N. advanced protocol.
+
+OPTIONS
+       options:
+              -m     specify mesh interface or VLAN created on top of a mesh interface (default 'bat0')
+              -h     print general batctl help
+              -v     print batctl version and batman-adv version (if the module is loaded)
+
+       commands:
+
+       interface|if [add|del iface(s)]
+              If no parameter is given or the first parameter is neither "add" nor "del" the current interface settings are displayed.  In order to add or delete interfaces specify "add" or "del" as first argument and append the
+              interface names you wish to add or delete. Multiple interfaces can be specified.
+
+       orig_interval|it [interval]
+              If no parameter is given the current originator interval setting is displayed otherwise the parameter is used to set the originator interval. The interval is in units of milliseconds.
+
+       ap_isolation|ap [0|1]
+              If no parameter is given the current ap isolation setting is displayed. Otherwise the parameter is used to enable or disable ap isolation. This command can be used in conjunction with "-m" option to target per VLAN
+              configurations.
+
+       bridge_loop_avoidance|bl [0|1]
+              If no parameter is given the current bridge loop avoidance setting is displayed. Otherwise the parameter is used to enable or disable the bridge loop avoidance. Bridge loop avoidance support has to be enabled when
+              compiling the module otherwise this option won't be available.
+
+       distributed_arp_table|dat [0|1]
+              If no parameter is given the current distributed arp table setting is displayed. Otherwise the parameter is used to enable or disable the distributed arp table.
+
+       aggregation|ag [0|1]
+              If no parameter is given the current aggregation setting is displayed. Otherwise the parameter is used to enable or disable OGM packet aggregation.
+
+       bonding|b [0|1]
+              If no parameter is given the current bonding mode setting is displayed. Otherwise the parameter is used to enable or disable the bonding mode.
+
+       fragmentation|f [0|1]
+              If no parameter is given the current fragmentation mode setting is displayed. Otherwise the parameter is used to enable or disable fragmentation.
+
+       network_coding|nc [0|1]
+              If no parameter is given the current network coding mode setting is displayed. Otherwise the parameter is used to enable or disable network coding.
+
+       multicast_mode|mm [0|1]
+              If no parameter is given the current multicast mode setting is displayed. Otherwise the parameter is used to enable or disable multicast optimizations (i.e. disabling means always sending own multicast frames via
+              classic flooding).
+
+       loglevel|ll [level[ level[ level]] ...]
+              If no parameter is given the current log level settings are displayed otherwise the parameter(s) is/are used to set the log level. Level 'none' disables all verbose logging. Level 'batman' enables messages related to
+              routing / flooding / broadcasting.  Level 'routes' enables messages related to routes being added / changed / deleted. Level 'tt' enables messages related to translation table operations. Level 'bla' enables messages
+              related to the bridge loop avoidance. Level 'dat' enables messages related to ARP snooping and the Distributed Arp Table. Level 'nc' enables messages related to network coding.  Level 'all' enables all messages. The
+              messages are sent to the batman-adv debug log. Use batctl log to retrieve it.  Make sure to have debugging output enabled when compiling the module otherwise the output as well as the loglevel options won't be avail‐
+              able.
+
+       log|l [-n]
+              batctl will read the batman-adv debug log which has to be compiled into the kernel module. If "-n" is given batctl will not replace the MAC addresses with bat-host names in the output.
+
+       gw_mode|gw [off|client|server] [sel_class|bandwidth]
+              If no parameter is given the current gateway mode is displayed otherwise the parameter is used to set the gateway mode. The second (optional) argument specifies the selection class (if 'client' was the first argument)
