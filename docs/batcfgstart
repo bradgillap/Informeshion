@@ -1,0 +1,22 @@
+# This isolates clients from speaking to each other.
+batctl ap_isolation 1 
+
+# Adding a gateweay for Internet connection, re-transmit nodes will attempt to forward back to the dhcp server to route through the
+# gateway address. This would be a useful configuration option. 
+
+# In this scenario we are running a dhcp serever and we know the internet speed which helps transmitters make better decisions for routing.
+# If you don't know the Internet speed you can leave out the speed.
+batctl gw_mode server 5mbit/1mbit
+
+# To run a node without that doesn't have dhcp but still connects to a gateweay
+batctl gw_mode client
+
+
+#Informational. See all available gateways 
+batctl gwl
+
+#Informational gateweay mode of the current node.
+batctl gwl
+
+# If two retransmit nodes are connected to the server, we can isolate them from each other to avoid chatter/collisions with ap isolation.
+batctl ap_isolation 1
