@@ -1,0 +1,49 @@
+1: Download a compiled BATMAN advanced kernel - it doesn't seem to ship with Raspbian. I got it from here. On a side note, Airmesh, where did you go? Your work looked like it was going to be interesting!
+
+2: Install Raspbian to two SD card and boot the Pi's up and login - I won't go into details here as it's been covered oh so many times everywhere else
+
+3: Copy the downloaded file to the following path on both Pi's:
+/lib/modules/X.X.XX+/kernal/net/batman-adv/
+X.X.XX+ will be your kernal version - there will most likely only be a single folder in there
+
+4: In the above folder, now rename the file to batman-adv.ko (on both Pi's)
+
+4: Run the following on both Pi's:
+sudo depmod -a
+
+5: You will most likely need to get BATCTL (batman control) which allows for easier control of BATMAN (again, on both Pi's): 
+sudo apt-get install batctl
+if it fails, do a sudo apt-get update and then rerun the command
+
+6: Now its time to run batman-adv on both units:
+sudo modprobe batman-adv
+
+7: To setup a simple mesh between two raspberry pis, copy and paste the following lines on the first unit:
+
+sudo ifconfig wlan0 mtu 1528
+sudo ifconfig wlan0 down; sudo iwconfig wlan0 mode ad-hoc essid my-mesh-network ap 02:12:34:56:78:90 channel 1
+sudo batctl if add wlan0
+sudo ifconfig wlan0 up
+sudo ifconfig bat0 up
+sudo ifconfig bat0 192.168.2.1
+
+8: And the following on the second unit:
+
+sudo modprobe batman-adv
+sudo ifconfig wlan0 mtu 1528
+sudo ifconfig wlan0 down; sudo iwconfig wlan0 mode ad-hoc essid my-mesh-network ap 02:12:34:56:78:90 channel 1
+sudo batctl if add wlan0
+sudo ifconfig wlan0 up
+sudo ifconfig bat0 up
+sudo ifconfig bat0 192.168.2.2
+
+9: Check you can ping each other, unit 1 is 192.168.2.1 and unit 2 is 192.168.2.2
+
+10: You can check if BATMAN can see the links by using the originator option
+sudo batctl o
+
+And that's it, a basic working mesh. Add more units by copy and pasting the above code and changing the last line (sudo ifconfig bat0 192.168.2.2) to the next IP address (.3, .4 etc)
+
+The above settings will remain until the unit is rebooted, if you need to set it up again after a reboot just following the above from point 6 onwards.
+
+Hope that helps someone
