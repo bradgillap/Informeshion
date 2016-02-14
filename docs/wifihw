@@ -1,0 +1,14 @@
+# if hostapd fails check syslog
+tail -f /var/log/syslog
+
+use ‘iw list’ command to check if your adapter support AP mode
+…
+Supported interface modes:
+* IBSS
+* managed
+* AP
+* AP/VLAN
+* monitor
+
+To get some output about why hostapd isn't starting
+sudo hostapd /etc/hostapd/hostapd.conf -dd
