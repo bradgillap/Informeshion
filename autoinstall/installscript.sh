@@ -55,7 +55,7 @@ fi
 
 if (whiptail --title "Install Needed Packages?" --yesno "We will now install the required packages. Continue?"  15 50 ) then
 
-	$SUDO apt-get install dnsutils dnsmasq batctl -y #
+	$SUDO apt-get install dnsutils dnsmasq batctl hostapd -y #
 
 else
     echo "User quit at package install. $?."
@@ -110,9 +110,12 @@ echo "(Exit status was $exitstatus)"
 
 if (whiptail --title "Continue Configuring Services?" --no-button "Quit" --yesno "We will now configure your services, Continue?" 15 50 ) then
     $SUDO modprobe batman-adv
-    $SUDO sed -i 's?^#address=/double-click.net/127.0.0.1.*$,address=/#/informeshion.lan,'
-    $SUDO sed -i 's/^#interface=.*$/interface=wlan0/'
-    $SUDO sed -i 's/^#dhcp-range=192.168.0.50,192.168.0.150,255.255.255.0,12h.*$/dhcp-range=192.168.0.20,192.168.0.254,255.255.255.0,12h/'
+#Don't forget to add file location when when dev is done
+    $SUDO sed -i 's?^#address=/double-click.net/127.0.0.1.*$,address=/#/informeshion.lan,' #dnsmasq.conf
+    $SUDO sed -i 's/^#interface=.*$/interface=wlan0/' #dnsmasq.conf
+    $SUDO sed -i 's/^#dhcp-range=192.168.0.50,192.168.0.150,255.255.255.0,12h.*$/dhcp-range=192.168.0.20,192.168.0.254,255.255.255.0,12h/' #dnsmasq.conf
+    $SUDO sed -i 's/^#DAEMON_CONF="".*$/DAEMON_CONF="/etc/hostapd/hostapd.conf/' #/etc/default/hostapd
+
 else
 
 	echo "User quit at configuration CONFIGURE SERVICES $?."
