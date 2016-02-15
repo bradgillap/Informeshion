@@ -4,9 +4,8 @@
 ## Two menu tracks this time. One beginner and one advanced
 
 ## INITIALIZE VARIABLES ##
-
-SPACE=$(df -H /)
-INSTPACKAGES=""
+ SPACE=$(df -H /)
+ INSTPACKAGES=""
 
 
 ## ROOT CHECK ## 
@@ -34,15 +33,16 @@ fi
 INSTPACKAGES=$(whiptail --title "Advanced - Choose Packages" --checklist \
 "Choose packages to install. Required packages are already selected." 15 60 4 \
 "batctl" "Configure mesh layer 2 protocol." ON \
-"dnsutils" "Includes DNS query tools like dig." OFF \
+"dnsutils" "Includes DNS query tools like dig." ON \
 "dnsmasq" "DHCP and DNS server in one package." OFF 3>&1 1>&2 2>&3)
  
 exitstatus=$?
 if [ $exitstatus = 0 ]; then
     echo "Installing selected packagese"
-
-    $SUDO apt-get install $INSTPACKAGES | tr -d '"' 
+    INSTPACKAGES=$(echo "$INSTPACKAGES" | tr -d '"') #Removed double quotes from selection output.
+    $SUDO apt-get install $INSTPACKAGES
 
 else
     echo "You chose Cancel."
 fi
+
