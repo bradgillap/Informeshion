@@ -53,7 +53,7 @@ function verifyFreeDiskSpace() {
     fi
 }
 
-function MainMenu() {
+function mainMenu() {
     MAINSEL=$(whiptail --title "Main Menu" --menu "Choose your option" 15 60 4 \
         "1" "Automatic Install" \
         "2" "Manual Install"  3>&1 1>&2 2>&3)
@@ -62,24 +62,23 @@ function MainMenu() {
 
             1)
                 echo "User selected automatic install"
-                SimpleInstall
+                simpleInstall
             ;;
             2)
                 echo "User selected advanced install"
-                AdvancedMenu
+                advancedMenu
             ;; 
         esac
 }
 
-function SimpleInstall() {
+function simpleInstall() {
     $SUDO apt-get update && $SUDO apt-get upgrade -y
     $SUDO apt-get install batctl dnsutils dnsmasq -y
     $SUDO modprobe batman-adv
     grep -q -F "batman-adv" /etc/modules ||  echo "batman-adv" | $SUDO tee -a /etc/modules #Add module to boot only if not in /etc/modules 
-
 }
 
-function AdvancedMenu() {
+function advancedMenu() {
     ADVSEL=$(whiptail --title "Advanced Menu" --menu "Choose an option" 15 60 4 \
         "1" "Choose Packages to Install" \
         "2" "Configure Services" \
@@ -87,19 +86,19 @@ function AdvancedMenu() {
     case $ADVSEL in
         1)
             echo "User selected Package install."
-            AdvancedInstall
+            advancedInstall
         ;;
         2)
             echo "User selected Configure Services."
-            ConfigureServices
+            configureServices
         ;;
         3)
-            MainMenu
+            mainMenu
         ;;
     esac
 }
 
-function AdvancedInstall() {
+function advancedInstall() {
     PKGSEL=$(whiptail --checklist --title "Select Packages" \
         "Choose packages to install." 15 60 4 \
         "batctl"   "Configure mesh layer 2 protocol." ON \
@@ -111,24 +110,25 @@ function AdvancedInstall() {
             PKGSEL=$(echo "$PKGSEL" | tr -d '"') #Removed double quotes from selection output.
             $SUDO apt-get install $PKGSEL
             whiptail --title "Package Install Complete" --msgbox "The installation is complete. Returning to Advanced Install Menu" 15 60
-            AdvancedMenu
+            advancedMenu
         else
             echo "You chose Cancel."
-            MainMenu
+            mainMenu
         fi
 }
 
-function ConfigureServices() {
+function configureServices() {
     if (whiptail --title "Configure Services" --yesno "This will configure the following. Enable batman kernel extension on boot." 15 60) then
         echo "User selected Yes, exit status $?."
         grep -q -F "batman-adv" /etc/modules ||  echo "batman-adv" | $SUDO tee -a /etc/modules #Add module to boot only if not in /etc/modules
-        AdvancedMenu
+        $SUDO modprobe batman-adv
+        advancedMenu
     else
         echo "User selected no, exit status $?."
-        AdvancedMenu
+        advancedMenu
     fi
 }
 
 internetCheck
 verifyFreeDiskSpace
-MainMenu
+mainMenu
