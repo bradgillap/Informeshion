@@ -4,7 +4,6 @@
 ## Two menu tracks this time. One beginner and one advanced
 
 ## INITIALIZE VARIABLES ##
- SPACE=$(df -H /)
  exitstatus=""
 ## MENU VARIABLES
  MAINSEL=""
@@ -27,18 +26,32 @@ else
     fi
 fi
 
-## INTERNET CHECK ##
-
-wget -q --spider http://google.com
-
-if [ $? -eq 0 ]; then
-    echo "Okay we are connected to the Internet. Let's proceed"
-else
-    echo "Plase connect to the Internet with cable and try running again"
-    exit 1
-fi
-
 ## FUNCTIONS ##
+
+    ## INTERNET CHECK##
+
+function internetCheck() {
+    wget -q --spider http://google.com
+
+    if [ $? -eq 0 ]; then
+        echo "Okay we are connected to the Internet. Let's proceed"
+    else
+        echo "Plase connect to the Internet with cable and try running again"
+        exit 1
+    fi
+
+    ## CHECK FREE DISK SPACE ##
+}
+function verifyFreeDiskSpace() {
+    # Figure out minimum space required. Currently set at 25MB, thanks pi-hole.
+    requiredFreeBytes=25600
+    existingFreeBytes=`df -lkP / | awk '{print $4}' | tail -1`
+
+    if [[ $existingFreeBytes -lt $requiredFreeBytes ]]; then
+        whiptail --msgbox --backtitle "Insufficient Disk Space" --title "Insufficient Disk Space" "\nYour system appears to be low on disk space. Informeshion recomends a minimum of $requiredFreeBytes Bytes.\nYou only have $existingFreeBytes Free.\n\nIf this is a new install you may need to expand your disk.\n\nTry running:\n    'sudo raspi-config'\nChoose the 'expand file system option'\n\nAfter rebooting, run this installation again."
+        exit 1
+    fi
+}
 
 function MainMenu() {
     MAINSEL=$(whiptail --title "Main Menu" --menu "Choose your option" 15 60 4 \
@@ -104,6 +117,7 @@ function AdvancedInstall() {
             MainMenu
         fi
 }
+
 function ConfigureServices() {
     if (whiptail --title "Configure Services" --yesno "This will configure the following. Enable batman kernel extension on boot." 15 60) then
         echo "User selected Yes, exit status $?."
@@ -114,5 +128,7 @@ function ConfigureServices() {
         AdvancedMenu
     fi
 }
-#AdvancedInstall
+
+internetCheck
+verifyFreeDiskSpace
 MainMenu
