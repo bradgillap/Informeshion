@@ -1,4 +1,13 @@
 #! /bin/bash
+echo '########################################################'
+echo '##                                                    ##'
+echo '##                     Informeshion                   ##'
+echo '##                                                    ##'
+echo '##  Inspired by piratebox and the pi-hole project.    ##'
+echo '##  Thanks to /r/bash, Raspbian forums and friends.   ##'
+echo '##                                                    ##'
+echo '########################################################'
+
 
 ## Time for a rewrite
 ## Two menu tracks this time. One beginner and one advanced
@@ -34,9 +43,9 @@ function internetCheck() {
     wget -q --spider http://google.com
 
     if [ $? -eq 0 ]; then
-        echo "Okay we are connected to the Internet. Let's proceed"
+        echo "Okay we are connected to the Internet. Let's proceed."
     else
-        echo "Plase connect to the Internet with cable and try running again"
+        echo "Plase connect to the Internet with cable and try running again."
         exit 1
     fi
 
