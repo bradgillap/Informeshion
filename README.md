@@ -4,6 +4,8 @@
 
 The Informeshion project seeks to script [Raspbian](https://www.raspbian.org/) as an information awareness broadcast station with mesh capabilities. The result will be low powered devices broadcasting wireless signal over short distances of **relevant information**. The solution must be easy for the organizer to setup and easier for the user to retrieve.
 
+![alt tag](https://raw.githubusercontent.com/bradgillap/Informeshion/master/images/install.png)
+
 ### What is Relevant Information?
 
 Think of how many scenarios there are where an access point providing specific event information would be useful. Many of these situations would be best served through different types of images, text, and video formats. Let's think critically about the problem we are trying to solve.
