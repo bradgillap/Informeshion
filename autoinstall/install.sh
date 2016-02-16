@@ -7,7 +7,6 @@
  SPACE=$(df -H /)
  exitstatus=""
 ## MENU VARIABLES
- INSTPACKAGES=""
  MAINSEL=""
  PKGSEL=""
  ADVSEL=""
@@ -30,7 +29,6 @@ else
     echo "Plase connect to the Internet with cable and try running again"
     exit 1
 fi
-
 
 ## FUNCTIONS ##
 
@@ -56,12 +54,14 @@ function SimpleInstall() {
     $SUDO apt-get update && $SUDO apt-get upgrade -y
     $SUDO apt-get install batctl dnsutils dnsmasq -y
     $SUDO modprobe batman-adv
+    grep -q -F "batman-adv" /etc/modules ||  echo "batman-adv" | $SUDO tee -a /etc/modules #Add module to boot only if not in /etc/modules 
+
 }
 
 function AdvancedMenu() {
     ADVSEL=$(whiptail --title "Advanced Menu" --menu "Choose an option" 15 60 4 \
         "1" "Choose Packages to Install" \
-        "2" "Something else" \
+        "2" "Configure Services" \
         "3" "Back" 3>&1 1>&2 2>&3)
     case $ADVSEL in
         1)
@@ -69,7 +69,8 @@ function AdvancedMenu() {
             AdvancedInstall
         ;;
         2)
-            echo "User selected something else."
+            echo "User selected Configure Services."
+            ConfigureServices
         ;;
         3)
             MainMenu
@@ -95,8 +96,15 @@ function AdvancedInstall() {
             MainMenu
         fi
 }
-
-
-
+function ConfigureServices() {
+    if (whiptail --title "Configure Services" --yesno "This will configure the following. Enable batman kernel extension on boot." 15 60) then
+        echo "User selected Yes, exit status $?."
+        grep -q -F "batman-adv" /etc/modules ||  echo "batman-adv" | $SUDO tee -a /etc/modules #Add module to boot only if not in /etc/modules
+        AdvancedMenu
+    else
+        echo "User selected no, exit status $?."
+        AdvancedMenu
+    fi
+}
 #AdvancedInstall
 MainMenu
