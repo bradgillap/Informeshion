@@ -82,7 +82,7 @@ function mainMenu() {
 
 function simpleInstall() {
     $SUDO apt-get update && $SUDO apt-get upgrade -y
-    $SUDO apt-get install batctl dnsutils dnsmasq -y
+    $SUDO apt-get install batctl hostapd dnsutils dnsmasq -y
     $SUDO modprobe batman-adv
     grep -q -F "batman-adv" /etc/modules ||  echo "batman-adv" | $SUDO tee -a /etc/modules #Add module to boot only if not in /etc/modules 
 }
@@ -112,6 +112,7 @@ function advancedInstall() {
         "Choose packages to install." 15 60 4 \
         "batctl"   "Configure mesh layer 2 protocol." ON \
         "dnsutils" "Includes DNS query tools like dig." ON \
+        "hostapd"  "Allows connections from clients." ON \
         "dnsmasq"  "DHCP and DNS server in one package." ON 3>&1 1>&2 2>&3)
     exitstatus=$?
         if [ $exitstatus = 0 ]; then
