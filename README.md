@@ -1,3 +1,6 @@
+# Dead Project
+I've since lost interest in this project. However, it did teach me a lot about creating whiptail menus in bash so I'll be writing a guide on my website how to build great whiptail functions based on this. 
+
 # Informeshion - Off The Shelf Mesh Network.
 
 ## Purpose
